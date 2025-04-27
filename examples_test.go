@@ -137,6 +137,8 @@ func ExampleBodyPart_templates() {
 		panic(" :( ")
 	}
 
+	// If you need to reuse the mail client, you need to reset some HTML before each sending. Otherwise, it will carry the content sent last time.
+	mail.HTML().Reset()
 	// Execute the template directly into the email body
 	if err := tmpl.Execute(mail.HTML(), tmplData); err != nil {
 		panic(" :( ")
