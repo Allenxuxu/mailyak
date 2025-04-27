@@ -49,6 +49,8 @@ mail.Subject("Business proposition")
 
 // mail.HTML() and mail.Plain() implement io.Writer, so you can do handy things like
 // parse a template directly into the email body
+// If you need to reuse the mail client, you need to reset some HTML before each sending. Otherwise, it will carry the content sent last time.
+mail.HTML().Reset()
 if err := t.ExecuteTemplate(mail.HTML(), "htmlEmail", data); err != nil {
     panic(" 💣 ")
 }
